@@ -4,6 +4,7 @@ module V0
   module CoronavirusChatbot
     class TokensController < ApplicationController
       skip_before_action :authenticate, only: [:create]
+      skip_forgery_protection only: :create
 
       rescue_from 'V0::CoronavirusChatbot::TokensController::ServiceException', with: :service_exception_handler
       rescue_from Net::HTTPError, with: :service_exception_handler
